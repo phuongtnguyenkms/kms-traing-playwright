@@ -2,3 +2,8 @@ node_modules
 playwright-report
 test-results
 .env
+.env.local
+.env.*
+!.env.example
+!.env.local.example
+!.env.*.example

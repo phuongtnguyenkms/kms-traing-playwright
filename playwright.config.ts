@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 const testEnv = process.env.TEST_ENV || 'int';
 dotenv.config({ path: `.env.${testEnv}` });
 dotenv.config({ path: '.env', override: false });
+dotenv.config({ path: '.env.local', override: true });
 
 const baseURL = process.env.BASE_URL || 'https://evolvetest.elsevier.com/';
 

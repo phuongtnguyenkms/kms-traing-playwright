@@ -17,7 +17,15 @@ npx playwright install chromium
 cp .env.example .env
 ```
 
-3. Run tests:
+3. Store login credentials in a separate local-only file:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Then set values for `LOGIN_USERNAME` and `LOGIN_PASSWORD` in `.env.local`.
+
+4. Run tests:
 
 ```bash
 npm test
@@ -25,11 +33,12 @@ npm test
 
 ## Environment profiles
 
-The framework supports `dev`, `staging`, and `prod` through `TEST_ENV`:
+The framework supports `int`, `staging`, and `prod` through `TEST_ENV`.
+Create local files from templates (these local files are ignored by git):
 
-- `.env.dev`
-- `.env.staging`
-- `.env.prod`
+- `cp .env.int.example .env.int`
+- `cp .env.staging.example .env.staging`
+- `cp .env.prod.example .env.prod`
 
 Run by profile:
 
@@ -39,7 +48,7 @@ npm run test:staging
 npm run test:prod
 ```
 
-`TEST_ENV` defaults to `dev` when not provided.
+`TEST_ENV` defaults to `int` when not provided.
 
 ## Project structure
 
