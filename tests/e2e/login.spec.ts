@@ -2,7 +2,13 @@ import { test, expect } from '../../fixtures/test.fixture';
 import { env } from '../../config/env';
 
 test.describe('Login Page', () => {
-  const hasCredentials = Boolean(env.loginUsername && env.loginPassword);
+  const looksLikePlaceholder = (value: string): boolean => {
+    const v = value.trim().toLowerCase();
+    return !v || v.includes('your-username') || v.includes('your-password');
+  };
+
+  const hasCredentials =
+    !looksLikePlaceholder(env.loginUsername) && !looksLikePlaceholder(env.loginPassword);
 
   test.beforeEach(async ({ loginPage }) => {
     await loginPage.goto();
@@ -27,7 +33,7 @@ test.describe('Login Page', () => {
   });
 
   test('should show error with invalid password', async ({ loginPage }) => {
-    await loginPage.login('binstructors', 'wrongpassword');
+    await loginPage.login(env.loginUsername, 'wrongpassword');
     await loginPage.verifyLoginError();
   });
 
