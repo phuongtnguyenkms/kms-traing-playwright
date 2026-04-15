@@ -7,12 +7,12 @@ test.describe('Login Page', () => {
 
   test('recorded sign in flow on evolve site', async ({ loginPage }) => {
     // beforeEach already navigated and opened the sign-in form
-    await loginPage.login('binstructors', 'Hesi12345');
+    await loginPage.login('', '');
     await loginPage.verifyLoginSuccess();
   });
 
   test('should login successfully with valid credentials', async ({ loginPage }) => {
-    await loginPage.login('binstructors', 'Hesi12345');
+    await loginPage.login('', '');
     await loginPage.verifyLoginSuccess();
   });
 
